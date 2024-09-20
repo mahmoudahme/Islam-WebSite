@@ -11,10 +11,14 @@ import {
   updatePrograms
 } from "../Controller/ProgramController.js"; 
 
+const uploadDir = 'uploads/Videos';
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 // إعداد Multer لرفع الصور
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/Programs/'); // مسار حفظ الملفات
+    cb(null, uploadDir); // مسار حفظ الملفات
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);// اسم الملف
