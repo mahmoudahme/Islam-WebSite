@@ -10,7 +10,6 @@ import { globalError } from "./Middleware/errorMiddleware.js";
 import cookieParser from "cookie-parser";
 
 import authRouter from "./Router/authRouter.js"
-import quranicVersesRouter from "./Router/quranicVersesRouter.js";
 import monothesimBlogRouter from "./Router/monothesimBlogRouter.js" 
 import PrayerRouter from "./Router/PrayerRouter.js"
 import CertificateRouter from "./Router/CertificateRouter.js"
@@ -52,7 +51,6 @@ if(process.env.NODE_ENV == "development"){
 }  
 
 app.use("/api/auth/", authRouter)
-app.use("/api/monotheism/", quranicVersesRouter)
 app.use("/api/monotheismBlog/", monothesimBlogRouter)
 app.use("/api/prayerBlog/", PrayerRouter)
 app.use("/api/certificateBlog/", CertificateRouter)
