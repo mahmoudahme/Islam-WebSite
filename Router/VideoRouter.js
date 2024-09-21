@@ -32,6 +32,6 @@ const router = express.Router();
 router.post("/", upload.single('videoName') , CreateNewVideo);
 router.get("/" , getAllVideosBlog);
 router.get("/:id" , getOneVideo);
-router.put("/:VideoId" , updateVideoBlog);
+router.put("/:VideoId" , upload.any('videoName') ,updateVideoBlog);
 router.delete("/:VideoId" , deleteVideoBlog);
 export default router
