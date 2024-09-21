@@ -34,6 +34,6 @@ router.post("/", upload.single('bookName') , CreateNewBook);
 router.get("/" , getAllBooksBlog);
 router.get("/:id" , getOneBook);
 router.get("/download/:id" , downloadController)
-router.put("/:bookId" , updateBookBlog);
+router.put("/:bookId" ,upload.any('bookName') , updateBookBlog);
 router.delete("/:BookId" , deleteBookBlog);
 export default router
