@@ -90,7 +90,7 @@ export const updateMonothesimBlog = async (req, res, next) => {
     
     // const image = req.file.originalname;
     
-    if(req.files=="undefined"){
+    if(req.files.length > 0){
       const VerseId = req.params.verseId;
       cloudinary.config({
         cloud_name: "dcrxqcgsr",
