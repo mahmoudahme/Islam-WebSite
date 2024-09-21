@@ -87,19 +87,51 @@ export const updateMonothesimBlog = async (req, res, next) => {
   try {
     // verifyToken(req, res, async () => {
     //   if (req.user.isAdmin) {
-    const VerseId = req.params.verseId;
-    console.log(VerseId);
-    const newmonothesimBlog = await monothesimBlogsModel.findByIdAndUpdate(
-      VerseId,
-      { $set: req.body },
-      { new: true }
-    );
-    res
-      .status(200)
-      .json({
-        message: "Blog is Updated",
-        newmonothesimBlog: newmonothesimBlog,
+    
+    // const image = req.file.originalname;
+    
+    if(req.files=="undefined"){
+      const VerseId = req.params.verseId;
+      cloudinary.config({
+        cloud_name: "dcrxqcgsr",
+        api_key: "877545668177469",
+        api_secret: "c4UWnxFWIHzWt7iYTXecqiwYKzQ", // Click 'View API Keys' above to copy your API secret
       });
+      cloudinary.uploader.upload(req.files[0].path, async function (err, result) {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({
+            success: false,
+            message: "Error",
+          });
+        }
+        const newmonothesimBlog = await monothesimBlogsModel.findByIdAndUpdate(
+          VerseId,
+          {$set : req.body ,image : result.url },
+          {new : true}
+        );
+        res
+          .status(200)
+          .json({
+            message: "Blog is Updated",
+            newmonothesimBlog: newmonothesimBlog,
+          });
+      })
+    }else{
+      const VerseId = req.params.verseId;
+      const newmonothesimBlog = await monothesimBlogsModel.findByIdAndUpdate(
+        VerseId,
+        {$set : req.body},
+        {new : true}
+      );
+      res
+        .status(200)
+        .json({
+          message: "Blog is Updated",
+          newmonothesimBlog: newmonothesimBlog,
+        });
+    }
+    
     //   }else{
     //     return next(new ApiError("You are not Admin to use this Feature", 404))
     //   }
