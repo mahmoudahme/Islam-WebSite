@@ -28,6 +28,6 @@ const router = express.Router();
 router.post("/",upload.single("image"), createMonothesimBlog);
 router.get("/", getAllMonothesimBlog);
 router.get("/:id", getOneBlog);
-router.put("/:verseId", updateMonothesimBlog);
+router.put("/:verseId",upload.any("image"),updateMonothesimBlog);
 router.delete("/:BlogId", deleteMonothesimBlog);
 export default router;
