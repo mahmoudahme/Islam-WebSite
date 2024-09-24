@@ -29,7 +29,7 @@ Paris: باريس (فرنسا)
 Toronto: تورونتو (كندا)
 Berlin: برلين (ألمانيا)
 Mumbai: مومباي (الهند)
-
+ 
 ###############################################################
 "أذكار الصباح"
 https://ahegazy.github.io/muslimKit/json/azkar_sabah.json
