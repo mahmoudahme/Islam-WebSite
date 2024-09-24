@@ -60,7 +60,7 @@ export const getAllMonothesimBlog = async (req, res, next) => {
     //   if (req.user) {
         const monothesimBlog = await monothesimBlogsModel.find();
         await Views(monothesimBlog , monothesimBlogsModel)
-        res.status(200).json({ monothesimBlog: monothesimBlog  , Times : times });
+        res.status(200).json({ monothesimBlog: monothesimBlog});
     //   } else {
     //     return next(
     //       new ApiError("You are not Authentcator to use this Feature", 404)
