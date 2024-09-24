@@ -8,6 +8,7 @@ import { configDotenv } from "dotenv";
 import { DBConnection } from "./Config/DbConnection.js";
 import { globalError } from "./Middleware/errorMiddleware.js";
 import cookieParser from "cookie-parser";
+import axios from "axios";
 
 import authRouter from "./Router/authRouter.js"
 import monothesimBlogRouter from "./Router/monothesimBlogRouter.js" 
@@ -19,6 +20,7 @@ import haijRouter from "./Router/haijRouter.js"
 import bookRouter from "./Router/bookRouter.js"
 import VideoRouter from "./Router/VideoRouter.js"
 import LifeRouter from "./Router/LifeRouter.js";
+import NewsRouter from "./Router/NewsRouter.js"
 import ProgramRouter from "./Router/ProgramRouter.js"
 
 configDotenv({path : "config/config.env"})
@@ -47,7 +49,7 @@ if(process.env.NODE_ENV == "development"){
     console.log("Mode : Development")
 }else if(process.env.NODE_ENV == "production"){
   app.use(morgan("dev"))
-    console.log("Mode : Production") 
+    console.log("Mode : Production")  
 }  
 
 app.use("/api/auth/", authRouter)
@@ -60,7 +62,9 @@ app.use("/api/haijBlog/", haijRouter)
 app.use("/api/faithBook/", bookRouter)
 app.use("/api/faithVideo/", VideoRouter)
 app.use("/api/lifeBlogs/", LifeRouter)
+app.use("/api/news/", NewsRouter)
 app.use("/api/programs/", ProgramRouter)
+
 
 //global error Middleware 
 app.use(globalError);
