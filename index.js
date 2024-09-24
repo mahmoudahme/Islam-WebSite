@@ -8,7 +8,6 @@ import { configDotenv } from "dotenv";
 import { DBConnection } from "./Config/DbConnection.js";
 import { globalError } from "./Middleware/errorMiddleware.js";
 import cookieParser from "cookie-parser";
-import axios from "axios";
 
 import authRouter from "./Router/authRouter.js"
 import monothesimBlogRouter from "./Router/monothesimBlogRouter.js" 
