@@ -96,7 +96,7 @@ export const updateMonothesimBlog = async (req, res, next) => {
   try {
     // verifyToken(req, res, async () => {
     //   if (req.user.isAdmin) {
-        const image = req.file.originalname;
+        // const image = req.file.originalname;
 
         if (req.files.length > 0) {
           const VerseId = req.params.verseId;
